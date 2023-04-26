@@ -4,4 +4,3 @@ author: "Michał Bojanowski"
 institute: "UAB & ALK"
 format: revealjs
 ---
-
