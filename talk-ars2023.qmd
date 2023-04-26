@@ -1,7 +1,7 @@
 ---
-title: "talk-ars2023"
+title: "A handful of friends or a hundred acquaintances?"
+author: "Michał Bojanowski"
+institute: "UAB & ALK"
+format: revealjs
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
