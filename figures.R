@@ -10,10 +10,17 @@ library(igraph)
 library(graphlayouts)
 library(ggraph)
 
-circle_names <-   c("support", "sympathy", "affinity", "active", "acquaintances")
+circles <- c(
+  support = 5,
+  sympathy = 15,
+  affinity = 50,
+  active = 150,
+  acquaintances = 500
+)
+
 alters <- factor(
-  rep(circle_names, c(5, 15, 50, 150, 500)),
-  levels = circle_names
+  rep(names(circles), circles),
+  levels = names(circles)
 )
 edb <- data.frame(
   ego = 1,
@@ -37,7 +44,7 @@ trace(layout_with_centrality, at = 8,
 ggraph(
   g, 
   layout = "centrality", 
-  centrality = match(V(g)$circle, rev(circles), nomatch = 6) |>
+  centrality = match(V(g)$circle, rev(names(circles)), nomatch = 6) |>
     jitter()
 ) +
   draw_circle(use = "cent") +
@@ -46,3 +53,23 @@ ggraph(
   theme_void() +
   scale_fill_discrete(name = "Dunbar's circle")
 
+
+
+
+# Dunbar's circles #2 -----------------------------------------------------
+
+library(tidyverse)
+
+circles |>
+  enframe() |>
+  arrange(desc(value)) |>
+  mutate(
+    l = lead(value, default = 0),
+    a = value - l,
+    r = sqrt(a / pi)
+  ) |>
+  ggplot(aes(x=factor(1), fill=name)) +
+  geom_bar(aes(y=r), width = 1, color = NA, stat = "identity") +
+  coord_polar() +
+  scale_fill_discrete(name = "Dunbar's circles") +
+  theme_void()
