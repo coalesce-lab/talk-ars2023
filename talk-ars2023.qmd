@@ -2,5 +2,212 @@
 title: "A handful of friends or a hundred acquaintances?"
 author: "Michał Bojanowski"
 institute: "UAB & ALK"
-format: revealjs
+format: 
+  revealjs:
+    slide-number: c/t
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(igraph)
+library(graphlayouts)
+library(ggraph)
+
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+```
+
+## Personal network
+
+```{r dunbar-circles}
+circles <- c(
+  "Support clique" = 5,
+  "Sympathy group" = 15,
+  "Affinity group" = 50,
+  "Active network" = 150,
+  "Acquaintances" = 500
+)
+
+alters <- factor(
+  rep(names(circles), circles),
+  levels = names(circles)
+)
+edb <- data.frame(
+  ego = 1,
+  alter = seq_along(alters) + 1
+)
+
+g <- graph_from_data_frame(edb, directed = FALSE)
+V(g)$circle <- c(factor("Ego"), alters)
+V(g)$is_ego <- V(g)$circle == "Ego"
+V(g)$outer <- V(g)$circle %in% c("Affinity group", "Active network", "Acquaintances")
+```
+
+```{r dunbar-circles-graph}
+ggraph(
+  g, 
+  layout = "centrality", 
+  centrality = match(V(g)$circle, rev(names(circles)), nomatch = 6) |>
+    jitter()
+) +
+  draw_circle(use = "cent") +
+  geom_edge_link0(color = "gray90") +
+  geom_node_point(aes(fill = circle), color = "white", size = 5, shape = 21) +
+  theme_void() +
+  theme(
+    text = element_text(size = 20)
+  ) +
+  scale_fill_discrete(name = "Dunbar's circles")
+```
+
+::: {.notes}
+
+- The set of social relationships surrounding an individual
+- Dunbar: Hierarchicallly-inclusive layers
+
+:::
+
+
+
+
+
+## Core ties
+
+```{r dunbar-circles-inner}
+ggraph(
+  g, 
+  layout = "centrality", 
+  centrality = match(V(g)$circle, rev(names(circles)), nomatch = 6) |>
+    jitter()
+) +
+  draw_circle(use = "cent") +
+  geom_edge_link0(color = "gray90") +
+  geom_node_point(aes(fill = circle, alpha = !outer), 
+                  color = "white", size = 5, shape = 21) +
+  theme_void() +
+  theme(
+    text = element_text(size = 20)
+  ) +
+  scale_fill_discrete(name = "Dunbar's circles") +
+  guides(
+    alpha = FALSE
+  )
+```
+
+
+::: {.notes}
+
+Research usually focuses on the core because:
+
+- Seemed more impactful for the ego
+- Typically small number of alters -- convenient to collect data
+
+:::
+
+
+
+
+## Core ties provide
+
+- Social support: material, economic, emotional
+- Feeling of being loved
+- Improve coping with daily challenges and getting ahead
+- Improve physical and mental health and well-being
+
+
+
+## Core networks
+
+- Relatively low degree
+- Relationships are intimate and "strong"
+- Relationships usually parallel to kinship
+- Local in physical space (67% of core ties with 1 hr)
+- High social closure (local clustering)
+- Stable over time
+
+
+
+
+
+
+## Acquaintance ties
+
+```{r dunbar-circles-outer}
+ggraph(
+  g, 
+  layout = "centrality", 
+  centrality = match(V(g)$circle, rev(names(circles)), nomatch = 6) |>
+    jitter()
+) +
+  draw_circle(use = "cent") +
+  geom_edge_link0(color = "gray90") +
+  geom_node_point(aes(fill = circle, alpha = outer | is_ego), 
+                  color = "white", size = 5, shape = 21) +
+  theme_void() +
+  theme(
+    text = element_text(size = 20)
+  ) +
+  scale_fill_discrete(name = "Dunbar's circles") +
+  guides(
+    alpha = FALSE
+  )
+```
+
+
+## Acquaintance ties provide
+
+- Access to novel information
+  - Granovetter
+- Complementary / emergency support
+- Source of future friends
+  - Members of inner circles
+  - Sprecher
+- Influence the core ties
+	- Sprecher? Fingerman?
+- Looking glass on society
+	- Mondak, Mutz, Huckfield 2009
+	- Inequality perception
+	- False consensus -- an assumption in collective action and ABMs
+- Belonging and familiarity
+	- Fingerman
+- Some social support
+	- Moreton & Kelly & Sandstorm
+
+
+
+## Acquaintance ties (macro level)
+
+- Social cohesion
+	- Relational aspect of it, out of the other aspects
+	- Fractures across or along the faultlines
+	- Between or within other social divides
+- Weak ties are key to resilience
+	- Strong ties build local cohesion but also fragment society
+	- Weak ties are key to macrosocial integration (Blau 1974)
+	
+	
+	
+## Acquaintanship networks
+
+- understudied!
+- Stereotype: these are "accidental ties"
+	- Form at random (nearly)
+	- Personal networks are alike
+- Transient ties seem stable (Dunbar et al from Nature)
+
+
+# Questions
+
+# Methods
+
+## NSUM
+
+## BRIDGES survey
+
+# Results
+
+# PATCHWORK project
