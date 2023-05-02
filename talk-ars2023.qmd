@@ -77,8 +77,23 @@ ggraph(
 :::
 
 
+## Agenda
+
+1. Core and weak ties
+1. Collecting data on "weak ties"
+  - nsum
+  - alter elicitation
+1. Preliminary results
+  - Network sizes
+  - Composition
+  - Effects on opinions towards redistribution
+1. From personal to society-wide networks
 
 
+
+
+
+# Core and weak ties
 
 ## Core ties
 
@@ -127,7 +142,7 @@ Research usually focuses on the core because:
 
 ## Core networks
 
-- Relatively low degree
+- Relatively low degree (avg. 2-3)
 - Relationships are intimate and "strong"
 - Relationships usually parallel to kinship
 - Local in physical space (67% of core ties with 1 hr)
