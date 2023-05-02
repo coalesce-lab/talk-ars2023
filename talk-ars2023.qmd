@@ -8,6 +8,7 @@ format:
   revealjs:
     slide-number: c/t
     logo: "img/logos-all.png"
+    footer: "https://bit.ly/ars2023-keynote"
     self-contained: true
     self-contained-math: true
 title-slide-attributes: 
@@ -83,13 +84,8 @@ ggraph(
 ## Agenda
 
 1. Core and weak ties
-1. Collecting data on "weak ties"
-    - nsum
-    - alter elicitation
+1. Methods of collecting data
 1. Preliminary results
-    - Network sizes
-    - Composition
-    - Effects on opinions towards redistribution
 1. From personal to society-wide networks
 
 
@@ -200,34 +196,27 @@ ggraph(
 - @moreton_etal_2023 -- people sometimes prefer social support from weak ties to avoid being "in debt" to core ties, or not to burden close ties
 
 :::
-
-## Acquaintance ties (macro level)
-
-- Social cohesion
-	- Relational aspect of it, out of the other aspects
-	- Fractures across or along the faultlines
-	- Between or within other social divides
-- Weak ties are key to resilience
-	- Strong ties build local cohesion but also fragment society
-	- Weak ties are key to macrosocial integration (Blau 1974)
 	
 	
 	
 ## Acquaintanship networks
 
-- understudied!
+- Understudied!
 - Stereotype: these are "accidental ties"
-	- Form at random (nearly)
-	- Personal networks are alike
-- Transient ties seem stable (Dunbar et al from Nature)
+	- Form randomly
+	- Personal acquaintanship networks are alike across individuals
+- Transient ties seem stable [@hidd_etal_2023]
 
 
 # Questions
 
-- Network sizes of Acq and core
-- Composition of Acq networks
-- Overdispersion analysis 
-- Social cohesion computationally
+- What is the distribution of acquaintanship network sizes?
+- How are acquaintanship network composed?
+- What is the effects ofacquaintanship network on opinions towards redistribution?
+
+
+
+
 
 
 # Methods
@@ -365,7 +354,23 @@ $$\hat{d}_i = \frac{\sum_k y_{ik}}{\sum_k N_k}$$
 
 # From personal to society-wide networks
 
-## PATCHWORK project
+
+## Acquaintance ties -- macro level
+
+- Social cohesion
+	- **Relations**
+	- Attachment/belonging
+	- Orientation towards common good
+- Fractures across or along social and political divides
+- Weak ties are key to resilience
+	- Strong ties build local cohesion but also fragment society
+	- Weak ties are key to macrosocial integration (Blau 1974)
+  - Building resilient societies (UN, 2021)
+
+
+
+
+## PATCHWORK project {.smaller}
 
 - Five European countries, representing different social cohesion regimes (Dragolov et al., 2016; Green and Janmaat, 2011)
     - Sweden, Hungary, Poland, Switzerland, The Netherlands
@@ -373,12 +378,24 @@ $$\hat{d}_i = \frac{\sum_k y_{ik}}{\sum_k N_k}$$
 - Combines cross-national survey with qualitative analysis, agent-based modeling and simulation
 
 
-ERC Advanced (PI Miranda Lubbers)
+:::: {.columns}
+
+::: {.column}
+
+ERC Advanced Grant (PI Miranda Lubbers)
+
+:::
+
+::: {.column}
+
+![](img/logos-patchwork.png)
+
+:::
+
+::::
 
 
-
-
-##
+## The social fabric
 
 :::: {.columns}
 
@@ -434,16 +451,23 @@ ERC Advanced (PI Miranda Lubbers)
 - Use a generative network model
     - Extended *Configuration Model* [@molloy_critical_1995;@fellows_respondent-driven_2019]
     - Kronecker graphs [@leskovec_kronecker_2010]
-    - ERGMs [@lusher_exponential_2013;@KrHa11a;@KrMo17i]
+    - ERGMs [@KrHa11a;@KrMo17i;@krivitsky.etal_2022b]
     - ERGM-based hybrid [@smith_macrostructure_2012;@smith_global_2015;@smith_using_2018]
 - Sample networks
 - Analyze, run ABMs
 
 
+## The COALESCE LAB
+
+![](img/thelab.png)
+
+
 ## Stay in touch!
 
 - Data will be publicly available
-- <http://coalesce-lab.com/>
+- We are open for collaborations and ideas!
+- The Lab: <http://coalesce-lab.com/>
+- These slides: <https://bit.ly/ars2023-keynote>
 
 ![](img/logos-all.png)
 
