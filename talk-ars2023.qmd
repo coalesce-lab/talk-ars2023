@@ -3,10 +3,13 @@ title: "A handful of friends or a hundred acquaintances?"
 author: "Michał Bojanowski"
 institute: "Autonomous University of Barcelona &<br/>Kozminski University"
 date: "May 3, 2023"
+bibliography: [refs.bib, refs2.bib, zotero.bib]
 format: 
   revealjs:
     slide-number: c/t
     logo: "img/logos-all.png"
+    self-contained: true
+    self-contained-math: true
 title-slide-attributes: 
   data-background-image: img/network-background-1.png
 editor_options: 
@@ -81,12 +84,12 @@ ggraph(
 
 1. Core and weak ties
 1. Collecting data on "weak ties"
-  - nsum
-  - alter elicitation
+    - nsum
+    - alter elicitation
 1. Preliminary results
-  - Network sizes
-  - Composition
-  - Effects on opinions towards redistribution
+    - Network sizes
+    - Composition
+    - Effects on opinions towards redistribution
 1. From personal to society-wide networks
 
 
@@ -142,7 +145,7 @@ Research usually focuses on the core because:
 
 ## Core networks
 
-- Relatively low degree (avg. 2-3)
+- Relatively low degree (avg. 3 - 4)
 - Relationships are intimate and "strong"
 - Relationships usually parallel to kinship
 - Local in physical space (67% of core ties with 1 hr)
@@ -178,26 +181,25 @@ ggraph(
 ```
 
 
-## Acquaintance ties provide
+## Acquaintance ties provide {.smaller}
 
 - Access to novel information
   - Granovetter
-- Complementary / emergency support
-- Source of future friends
-  - Members of inner circles
-  - Sprecher
-- Influence the core ties
-	- Sprecher? Fingerman?
-- Looking glass on society
-	- Mondak, Mutz, Huckfield 2009
-	- Inequality perception
-	- False consensus -- an assumption in collective action and ABMs
-- Belonging and familiarity
-	- Fingerman
-- Some social support
-	- Moreton & Kelly & Sandstorm
+- Complementary / emergency support [@fingerman_2009]
+- Source of future friends [@sprecher_2022]
+- Influence the core ties [@fingerman_2009; @sprecher_2022]
+- Looking glass on society 
+	- perceptions of political situations based local evaluations [@mondak.etal_1996]
+	- Inequality perception [@schulz_etal_2022]
+- Belonging and familiarity [@fingerman_2009]
+- Sometimes preferred sources of social support [@moreton_etal_2023]
 
+::: {.notes}
 
+- @mondak.etal_1996 examine the way how people evaluate politics and the economy based on evaluating their households, neghborhoods and circles of social contacts
+- @moreton_etal_2023 -- people sometimes prefer social support from weak ties to avoid being "in debt" to core ties, or not to burden close ties
+
+:::
 
 ## Acquaintance ties (macro level)
 
@@ -230,10 +232,219 @@ ggraph(
 
 # Methods
 
-## NSUM
 
-## BRIDGES survey
+## The approach
 
-# Results
+- Estimate **overall** properties of acquaintanship network using NSUM
+    - Degree distribution
+    - Cohesiveness across categorical boundaries
+- Take **samples** of alters
+    - Random samples based on names
+    - Purposive samples based on social groups (positions and origins)
 
-# PATCHWORK project
+
+## The BRIDGES survey
+
+- **Country**: Spain
+- $N = 1500$
+- **Age**: 18+
+- **Mode**: CAPI interviews
+- **Interview time**: ~ 30 minutes
+- **Time**: October - December 2021
+
+
+
+
+## Network Scale-Up Method (NSUM)
+
+NSUM = Survey instrument + Statistical model
+
+- Estimating personal network sizes^[@killworth.etal_1990]
+- Estimating size(s) of hidden populations^[@killworth_estimation_1998; @killworth_social_1998]
+
+
+
+
+
+## NSUM -- survey instrument
+
+::: {.callout-tip}
+## BRIDGES survey 
+
+Now I will ask you about the people you know in **Spain in general**. I will ask about the people you know with certain characteristics. By knowing someone we understand that you know the first name of this person and you would recognize one another if you ran into them for example in the street, in a shop, or in another place. This includes both **close relationships** such as your partner, family, friends, neighbors, coworker or fellow students and **less close relationships**, such as for example people whom you have met in the associations to which you belong or who you know via other people. 
+
+These people do not have to live near you, you can also be in contact with them through social media or by phone. You may like them or not. Please do not include deceased persons, people under 18 years old, nor yourself.
+
+How many people **over the age of 18** do you know (by name and by sight) who have the following jobs, whether they are women or men?
+:::
+
+
+## NSUM positions {.scrollable}
+
+![](img/nsum-positions.png){ height=1000px }
+
+## NSUM first names {.scrollable}
+
+![](img/nsum-names.png){ height=1000px }
+
+
+## NSUM estimator
+
+Aggregated Relational Data (ARD)
+
+  - $y_{ik}$ -- number of persons from subpopulation $k$ "known" to $i$
+  - $N_k$ -- known size of subpopulation $k$ (e.g. from census statistics)
+
+$$\hat{d}_i = \frac{\sum_k y_{ik}}{\sum_k N_k}$$
+
+[@killworth_estimation_1998; @killworth_social_1998]
+
+
+
+
+
+
+## NSUM -- estimation and modeling {.smaller}
+
+:::: {.columns}
+
+::: {.column}
+
+- Types of parameters estimated
+  - Estimated degree $d_i$
+  - Overdispersion
+  - Effects and biases
+
+:::
+
+
+::: {.column}
+
+- MLE [@killworth.etal_1990]
+- Bayesian hierarchical models
+    - @zheng_etal_2006
+    - @mccormick.etal_2010
+    - @diprete.etal_2011
+    - @feehan.etal_2016
+    - @laga.etal_2021
+    - @laga.etal_2021a (**a review**)
+    - @baum2023uses
+
+:::
+
+::::
+
+
+# Illustrations
+
+## Degree distribution
+
+![](img/degree-distribution.png)
+
+
+## Composition: occupations
+
+![](img/nsum-composition-pos.png)
+
+
+
+## Composition: gender
+
+![](img/nsum-composition-gender.png)
+
+
+## Effects on opinions on income redistribution
+
+![](img/redistribution-glm.png)
+
+
+
+
+
+
+
+# From personal to society-wide networks
+
+## PATCHWORK project
+
+- Five European countries, representing different social cohesion regimes (Dragolov et al., 2016; Green and Janmaat, 2011)
+    - Sweden, Hungary, Poland, Switzerland, The Netherlands
+- Categorical boundaries: Social class, ethnicity, religion, political orientation
+- Combines cross-national survey with qualitative analysis, agent-based modeling and simulation
+
+
+ERC Advanced (PI Miranda Lubbers)
+
+
+
+
+##
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Network spanning the whole society
+- Close friends and distant acquaintances
+- Ties along and across various social cleavages
+- Unfortunately *unobservable* by means of *sociocentric* methods
+
+:::
+
+::: {.column width="50%"}
+
+![](img/network-1.png)
+
+:::
+
+::::
+
+
+
+
+
+## Partial network information
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Probability sample of egocentric networks
+- Acquaintance relations: **Network Scale-Up Method**
+- Core relations: **name generators** and **interpreters** [@marsden-sna-handbook]
+
+:::
+
+::: {.column width="50%"}
+
+![](img/network-egosample-1.png)
+
+:::
+
+::::
+
+
+
+
+
+## Computational approach to social cohesion {.smaller}
+
+- Generate an artificial population
+- Estimate a set of network features
+- Use a generative network model
+    - Extended *Configuration Model* [@molloy_critical_1995;@fellows_respondent-driven_2019]
+    - Kronecker graphs [@leskovec_kronecker_2010]
+    - ERGMs [@lusher_exponential_2013;@KrHa11a;@KrMo17i]
+    - ERGM-based hybrid [@smith_macrostructure_2012;@smith_global_2015;@smith_using_2018]
+- Sample networks
+- Analyze, run ABMs
+
+
+## Stay in touch!
+
+- Data will be publicly available
+- <http://coalesce-lab.com/>
+
+![](img/logos-all.png)
+
+## References
