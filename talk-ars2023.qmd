@@ -3,7 +3,7 @@ title: "A handful of friends or a hundred acquaintances?"
 author: "Michał Bojanowski"
 institute: "Autonomous University of Barcelona &<br/>Kozminski University"
 date: "May 3, 2023"
-bibliography: [refs.bib, refs2.bib, zotero.bib]
+bibliography: refs.bib
 format: 
   revealjs:
     slide-number: c/t
@@ -315,8 +315,8 @@ $$\hat{d}_i = \frac{\sum_k y_{ik}}{\sum_k N_k}$$
     - @mccormick.etal_2010
     - @diprete.etal_2011
     - @feehan.etal_2016
-    - @laga.etal_2021
-    - @laga.etal_2021a (**a review**)
+    - @laga_etal_2021
+    - @laga_etal_2021a (**a review**)
     - @baum2023uses
 
 :::
